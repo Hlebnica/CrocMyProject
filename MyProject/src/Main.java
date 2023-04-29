@@ -1,22 +1,22 @@
+import Genre.GenreDao;
+import Movie.MovieDao;
+import Rating.RatingDao;
+import Users.UsersDao;
 import java.sql.*;
 
 public class Main {
 
   public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection(ConnectionConfig.URL, "admin", "admin")) {
-      String sql = "select * from users";
-      try (Statement statement = conn.createStatement()) {
-        boolean hasResult = statement.execute(sql);
-        if (hasResult) {
-          try (ResultSet resultSet = statement.getResultSet()) {
-            while (resultSet.next()) {
-              String username = resultSet.getString(2);
-              String format = String.format("%s", username);
-              System.out.println(format);
-            }
-          }
-        }
-      }
+    try (Connection connection = DriverManager.getConnection(
+        ConnectionConfig.URL, ConnectionConfig.LOGIN, ConnectionConfig.PASSWORD);) {
+      GenreDao genreDao = new GenreDao(connection);
+      MovieDao movieDao = new MovieDao(connection);
+      UsersDao usersDao = new UsersDao(connection);
+      RatingDao ratingDao = new RatingDao(connection);
+
+
+
+
     } catch (SQLException e) {
       System.err.println("Ошибка при работе с БД: " + e.getMessage());
     }
