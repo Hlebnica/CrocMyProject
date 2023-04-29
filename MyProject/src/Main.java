@@ -1,7 +1,12 @@
+import Genre.Genre;
 import Genre.GenreDao;
+import Movie.Movie;
 import Movie.MovieDao;
+import Rating.Rating;
 import Rating.RatingDao;
+import Users.Users;
 import Users.UsersDao;
+import java.util.*;
 import java.sql.*;
 
 public class Main {
@@ -13,6 +18,16 @@ public class Main {
       MovieDao movieDao = new MovieDao(connection);
       UsersDao usersDao = new UsersDao(connection);
       RatingDao ratingDao = new RatingDao(connection);
+
+//      List<Genre> genres = genreDao.getAllGenres();
+//      for (Genre genre : genres) {
+//        System.out.println(genre.getId() + " " + genre.getGenre_name());
+//      }
+
+      List<Movie> movies = movieDao.getAllMovies();
+      for (Movie movie : movies) {
+        System.out.println(movie.getId() + " " + movie.getTitle());
+      }
 
 
 

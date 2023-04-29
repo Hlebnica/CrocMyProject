@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-/** Глобальная переменная с путем до места хранения БД, логином и паролем для удобства
+/** Путь до места хранения БД, логином и паролем для удобства
  *
  */
 public class ConnectionConfig {

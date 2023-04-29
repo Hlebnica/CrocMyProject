@@ -75,4 +75,23 @@ ON UPDATE CASCADE
 
 # Структура классов и пакетов
 
-ConnectionConfig - Глобальная переменная с путем до места хранения БД
+ConnectionConfig - Путь до места хранения БД, логином и паролем для удобства
+
+Genre - Жанры:
+    - Genre - Plain Old Java Object
+
+    - GenreDao - Data Access Object
+
+Movie - Фильмы:
+    - Movie - Plain Old Java Object
+
+    - MovieDao - Data Access Object
+
+Rating - Рейтинг:
+    - Rating - Plain Old Java Object
+
+    - RatingDao - Data Access Object
+
+Users - Пользователи:
+    - Users - Plain Old Java Object
+    - UsersDao - Data Access Object

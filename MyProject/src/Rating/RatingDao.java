@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RatingDao {
 
-  private Connection connection;
+  private final Connection connection;
 
   public RatingDao(Connection connection) {
     this.connection = connection;
