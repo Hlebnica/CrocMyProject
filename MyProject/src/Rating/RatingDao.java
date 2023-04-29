@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class RatingDao {
 
   private final Connection connection;
@@ -73,4 +74,8 @@ public class RatingDao {
     statement.close();
     return ratings;
   }
+
+
 }
+
+
