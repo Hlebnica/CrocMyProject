@@ -83,11 +83,15 @@ Genre - Жанры:
 
     - GenreDao - Data Access Object
 
+    - GenreImpoerter - Импорт жанров в БД
+
 Movie - Фильмы:
     
     - Movie - Plain Old Java Object
 
     - MovieDao - Data Access Object
+
+    - MovieImpoerter - Импорт фильмов в БД
 
 Rating - Рейтинг:
     

@@ -1,23 +1,21 @@
-package Movie;
+package Genre;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
 
+public class GenreImporter {
 
-public class MovieImporter {
-
-  public static void importMoviesFromCSV(String filePath, MovieDao movieDao)
+  public static void importGenresFromCSV(String filePath, GenreDao genreDao)
       throws IOException, SQLException {
     BufferedReader reader = new BufferedReader(new FileReader(filePath));
     String line;
     while ((line = reader.readLine()) != null) {
       String[] fields = line.split(",");
-      String title = fields[0];
-      int genreId = Integer.parseInt(fields[1]);
-      Movie movie = new Movie(title, genreId);
-      movieDao.addMovie(movie);
+      String genre_name = fields[0];
+      Genre genre = new Genre(0, genre_name);
+      genreDao.addGenre(genre);
     }
     reader.close();
   }

@@ -1,11 +1,9 @@
-import Genre.Genre;
-import Genre.GenreDao;
-import Movie.Movie;
-import Movie.MovieDao;
-import Rating.Rating;
-import Rating.RatingDao;
-import Users.Users;
-import Users.UsersDao;
+import Genre.*;
+import Movie.*;
+import Rating.*;
+import Users.*;
+
+import java.io.IOException;
 import java.util.*;
 import java.sql.*;
 
@@ -19,19 +17,20 @@ public class Main {
       UsersDao usersDao = new UsersDao(connection);
       RatingDao ratingDao = new RatingDao(connection);
 
+//      MovieImporter.importMoviesFromCSV(ConnectionConfig.CSV_FILE_PATH + "newMovies.csv", movieDao);
+//      GenreImporter.importGenresFromCSV(ConnectionConfig.CSV_FILE_PATH + "newGenres.csv", genreDao);
+
 //      List<Genre> genres = genreDao.getAllGenres();
 //      for (Genre genre : genres) {
 //        System.out.println(genre.getId() + " " + genre.getGenre_name());
 //      }
 
-      List<Movie> movies = movieDao.getAllMovies();
-      for (Movie movie : movies) {
-        System.out.println(movie.getId() + " " + movie.getTitle());
-      }
+//      List<Movie> movies = movieDao.getAllMovies();
+//      for (Movie movie : movies) {
+//        System.out.println(movie.getId() + " " + movie.getTitle());
+//      }
 
-
-
-
+      System.out.println("Done");
     } catch (SQLException e) {
       System.err.println("Ошибка при работе с БД: " + e.getMessage());
     }
