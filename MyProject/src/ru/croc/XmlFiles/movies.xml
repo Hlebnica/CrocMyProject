@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<movies>
+    <movie>
+        <genreId>1</genreId>
+        <id>1</id>
+        <title>Безумные Парни на Безумных Машинах</title>
+    </movie>
+    <movie>
+        <genreId>2</genreId>
+        <id>2</id>
+        <title>Гонка за Сокровищами</title>
+    </movie>
+    <movie>
+        <genreId>3</genreId>
+        <id>3</id>
+        <title>Зловещий маяк</title>
+    </movie>
+    <movie>
+        <genreId>4</genreId>
+        <id>4</id>
+        <title>Инопланетная угроза</title>
+    </movie>
+    <movie>
+        <genreId>5</genreId>
+        <id>5</id>
+        <title>Исчезновение ювелира</title>
+    </movie>
+    <movie>
+        <genreId>7</genreId>
+        <id>6</id>
+        <title>Магия Добра</title>
+    </movie>
+    <movie>
+        <genreId>8</genreId>
+        <id>7</id>
+        <title>Секреты прошлого</title>
+    </movie>
+    <movie>
+        <genreId>10</genreId>
+        <id>8</id>
+        <title>Таинственный Остров в океане</title>
+    </movie>
+    <movie>
+        <genreId>2</genreId>
+        <id>9</id>
+        <title>Лень придумывать название</title>
+    </movie>
+    <movie>
+        <genreId>4</genreId>
+        <id>10</id>
+        <title>Детективный детектив</title>
+    </movie>
+    <movie>
+        <genreId>5</genreId>
+        <id>12</id>
+        <title>Фантастично</title>
+    </movie>
+    <movie>
+        <genreId>1</genreId>
+        <id>13</id>
+        <title>Хехе</title>
+    </movie>
+    <movie>
+        <genreId>2</genreId>
+        <id>14</id>
+        <title>Хаха</title>
+    </movie>
+    <movie>
+        <genreId>3</genreId>
+        <id>15</id>
+        <title>Хихи</title>
+    </movie>
+    <movie>
+        <genreId>7</genreId>
+        <id>16</id>
+        <title>Ааааааа</title>
+    </movie>
+    <movie>
+        <genreId>11</genreId>
+        <id>17</id>
+        <title>Абоба</title>
+    </movie>
+    <movie>
+        <genreId>8</genreId>
+        <id>18</id>
+        <title>Мел</title>
+    </movie>
+    <movie>
+        <genreId>1</genreId>
+        <id>33</id>
+        <title>TestNewMovie1</title>
+    </movie>
+    <movie>
+        <genreId>2</genreId>
+        <id>34</id>
+        <title>TestNewMovie2</title>
+    </movie>
+    <movie>
+        <genreId>3</genreId>
+        <id>35</id>
+        <title>TestNewMovie3</title>
+    </movie>
+    <movie>
+        <genreId>2</genreId>
+        <id>36</id>
+        <title>TestNewMovie4</title>
+    </movie>
+    <movie>
+        <genreId>3</genreId>
+        <id>37</id>
+        <title>TestNewMovie5</title>
+    </movie>
+    <movie>
+        <genreId>7</genreId>
+        <id>38</id>
+        <title>TestNewMovie77</title>
+    </movie>
+    <movie>
+        <genreId>1</genreId>
+        <id>39</id>
+        <title>TestNewMovie11</title>
+    </movie>
+    <movie>
+        <genreId>2</genreId>
+        <id>40</id>
+        <title>TestNewMovie12</title>
+    </movie>
+    <movie>
+        <genreId>1</genreId>
+        <id>65</id>
+        <title>RandonMovieName1</title>
+    </movie>
+    <movie>
+        <genreId>2</genreId>
+        <id>66</id>
+        <title>RandonMovieName2</title>
+    </movie>
+    <movie>
+        <genreId>3</genreId>
+        <id>67</id>
+        <title>RandonMovieName3</title>
+    </movie>
+</movies>
