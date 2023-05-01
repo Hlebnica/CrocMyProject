@@ -44,7 +44,7 @@ INNER JOIN GENRE g  ON m.GENRE_ID  = g.ID
 GROUP BY m.TITLE
 HAVING g.GENRE_NAME = ?
 ORDER BY avg_rating DESC
-LIMIT ?
+LIMIT ?;
 
 -- Добавление оценки фильма по имени пользователя и названию фильма
 INSERT INTO rating (user_id, movie_id, rating_digit)
@@ -55,5 +55,5 @@ VALUES (
 -- Обновление оценки фильма по имени пользователя и названию фильма
 UPDATE rating SET rating_digit = ? 
 WHERE user_id = (SELECT id FROM users WHERE user_name = ?) 
-AND movie_id = (SELECT id FROM movie WHERE title = ?)
+AND movie_id = (SELECT id FROM movie WHERE title = ?);
 

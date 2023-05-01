@@ -1,6 +1,7 @@
 package ru.croc;
 
 import jakarta.xml.bind.JAXBException;
+import java.io.IOException;
 import ru.croc.Genre.*;
 import ru.croc.Movie.*;
 import ru.croc.Rating.*;
@@ -31,78 +32,114 @@ public class Main {
 
       if (isUserExists) {
         System.out.printf("Текущий пользователь в системе: %s \n", userName);
-        System.out.println("Список действий\n" +
-            "1 - Получить список фильмов по жанру\n" +
-            "2 - Оценить фильм по его названию\n" +
-            "3 - Обновить оценку фильму\n");
-        String action = input.nextLine();
-        String genreName;
-        String movieTitle;
-        int ratingNumber;
-        switch (action) {
-          case "1":
-            System.out.println("Введите название жанра");
-            genreName = input.nextLine();
-            System.out.println("Введите количество выводимых фильмов");
-            int limit = input.nextInt();
-            List<String> topComedies = movieDao.getTopMoviesByGenre(genreName.toLowerCase(), limit);
-            System.out.printf("Топ %d фильмов жанра %s:\n", limit, genreName);
-            for (String movie : topComedies) {
-              System.out.println(movie);
-            }
-            break;
-          case "2":
-            System.out.println("Введите название фильма");
-            movieTitle = input.nextLine();
-            System.out.println("Введите оценку от 0 до 10");
-            ratingNumber = input.nextInt();
-            ratingDao.addRatingByUserNameAndTitle(userName, movieTitle, ratingNumber);
-            System.out.println("Оценка добавлена");
-            break;
-
+        loop:
+        while (true) {
+          // Название жанра
+          String genreName;
+          // Название фильма
+          String movieTitle;
+          // Число рейтинга
+          int ratingNumber;
+          // Название файла для импорта/экспорта
+          String fileName;
+          System.out.println("\nСписок действий\n" +
+              "0 - Выход из программы\n" +
+              "1 - Получить список фильмов по жанру\n" +
+              "2 - Оценить фильм по его названию\n" +
+              "3 - Обновить оценку фильму\n" +
+              "4 - Импорт новых жанров из csv файла\n" +
+              "5 - Импорт новых фильмов из csv файла\n" +
+              "6 - Экспорт жанров из БД в xml файл\n" +
+              "7 - Экспорт фильмов из БД в xml файл\n" +
+              "8 - Получить список рейтинга фильмов и их оценок от пользователей\n" +
+              "9 - Получить список фильмов и их жанров\n");
+          String action = input.nextLine();
+          switch (action) {
+            case "0":
+              break loop;
+            case "1":
+              System.out.println("Введите название жанра");
+              genreName = input.nextLine();
+              System.out.println("Введите количество выводимых фильмов");
+              int limit = input.nextInt();
+              List<String> topComedies = movieDao.getTopMoviesByGenre(genreName.toLowerCase(),
+                  limit);
+              System.out.printf("Топ %d фильмов жанра %s:\n", limit, genreName);
+              for (String movie : topComedies) {
+                System.out.println(movie);
+              }
+              break;
+            case "2":
+              System.out.println("Введите название фильма, которому хотите поставить оценку");
+              movieTitle = input.nextLine();
+              System.out.println("Введите оценку от 0 до 10");
+              ratingNumber = input.nextInt();
+              ratingDao.addRatingByUserNameAndTitle(userName, movieTitle, ratingNumber);
+              System.out.println("Оценка добавлена");
+              break;
+            case "3":
+              System.out.println("Введите название фильма, которому хотите обновить оценку");
+              movieTitle = input.nextLine();
+              System.out.println("Введите оценку от 0 до 10");
+              ratingNumber = input.nextInt();
+              ratingDao.updateRatingByUserNameAndTitle(userName, movieTitle, ratingNumber);
+              System.out.println("Оценка добавлена");
+              break;
+            case "4":
+              System.out.println("Введите название файла для импорта новых жанров");
+              fileName = input.nextLine();
+              GenreImporter.importGenresFromCSV(ConnectionConfig.CSV_FILE_PATH + fileName,
+                  genreDao);
+              System.out.println("Новые жанры успешно импортированы из " + fileName);
+              break;
+            case "5":
+              System.out.println("Введите название файла для импорта новых фильмов");
+              fileName = input.nextLine();
+              MovieImporter.importMoviesFromCSV(ConnectionConfig.CSV_FILE_PATH + fileName,
+                  movieDao);
+              System.out.println("Новые фильмы успешно импортированы из " + fileName);
+              break;
+            case "6":
+              System.out.println("Введите название файла для экспорта жанров из БД");
+              fileName = input.nextLine();
+              GenreExporter.exportGenresToXML(ConnectionConfig.XML_FILE_PATH + fileName,
+                  genreDao);
+              System.out.println("Жанры из БД успешно экспортированы в " + fileName);
+              break;
+            case "7":
+              System.out.println("Введите название файла для экспорта фильмов из БД");
+              fileName = input.nextLine();
+              MovieExporter.exportGenresToXML(ConnectionConfig.XML_FILE_PATH + fileName,
+                  movieDao);
+              System.out.println("Фильмы из БД успешно экспортированы в " + fileName);
+              break;
+            case "8":
+              System.out.println("Список рейтинга фильмов и их оценок:");
+              List<String> allRatingsWithUserAndMovieNames =
+                  ratingDao.getAllRatingsWithUserAndMovieNames();
+              for (String rating : allRatingsWithUserAndMovieNames) {
+                System.out.println(rating);
+              }
+              break;
+            case "9":
+              System.out.println("Список фильмов и их жанров:");
+              List<String> allMoviesWithGenreNames =
+                  movieDao.getAllMoviesWithGenreNames();
+              for (String movie : allMoviesWithGenreNames) {
+                System.out.println(movie);
+              }
+              break;
+            default:
+              System.out.println("Неизвестная команда");
+          }
         }
-
-
       } else {
         System.out.println(userName + " не найден в списке пользователей.");
       }
 
-//      String userName = input.nextLine();
-//
-//      List<Users> users = usersDao.getAllUsers();
-//
-//      for (Users user : users) {
-//        System.out.println(user.getUserName());
-//      }
-
-//      GenreImporter.importGenresFromCSV(ConnectionConfig.CSV_FILE_PATH + "newGenres.csv", genreDao);
-//      MovieImporter.importMoviesFromCSV(ConnectionConfig.CSV_FILE_PATH + "newMovies.csv", movieDao);
-
-//        ratingDao.updateRatingByUserNameAndTitle("User2", "Абоба", 6);
-
-      GenreExporter.exportGenresToXML(ConnectionConfig.XML_FILE_PATH + "geners.xml", genreDao);
-      MovieExporter.exportGenresToXML(ConnectionConfig.XML_FILE_PATH + "movies.xml", movieDao);
-
-
-
-//      List<Rating> ratings = ratingDao.getAllRatings();
-//      for (Rating rating : ratings) {
-//        System.out.println(rating.getId() + " " + rating.getUserId() + " " + rating.getMovieId() + " " + rating.getRatingDigit());
-//      }
-
-//      List<Genre> genres = genreDao.getAllGenres();
-//      for (Genre genre : genres) {
-//        System.out.println(genre.getId() + " " + genre.getGenre_name());
-//      }
-
-//      List<Movie> movies = movieDao.getAllMovies();
-//      for (Movie movie : movies) {
-//        System.out.println(movie.getId() + " " + movie.getTitle());
-//      }
-
     } catch (SQLException e) {
       System.err.println("Ошибка при работе с БД: " + e.getMessage());
-    } catch (JAXBException e) {
+    } catch (JAXBException | IOException e) {
       throw new RuntimeException(e);
     }
   }

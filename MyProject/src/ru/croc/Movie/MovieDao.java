@@ -96,5 +96,27 @@ public class MovieDao {
     return topMovies;
   }
 
+  public List<String> getAllMoviesWithGenreNames() throws SQLException {
+    List<String> movies = new ArrayList<>();
+    String query = "SELECT m.ID, m.TITLE, g.GENRE_NAME " +
+        "FROM MOVIE m " +
+        "INNER JOIN GENRE g ON m.GENRE_ID = g.ID";
+    PreparedStatement statement = connection.prepareStatement(query);
+    ResultSet resultSet = statement.executeQuery();
+    movies.add("Id | Название фильма | Жанр фильма");
+    while (resultSet.next()) {
+      int id = resultSet.getInt("ID");
+      String movieTitle = resultSet.getString("TITLE");
+      String genreName = resultSet.getString("GENRE_NAME");
+      movies.add(id + " | " + movieTitle + " | " + genreName);
+    }
+    resultSet.close();
+    statement.close();
+    return movies;
+  }
+
+
+
+
 
 }
