@@ -125,4 +125,19 @@
         <id>40</id>
         <title>TestNewMovie12</title>
     </movie>
+    <movie>
+        <genreId>1</genreId>
+        <id>65</id>
+        <title>RandonMovieName1</title>
+    </movie>
+    <movie>
+        <genreId>2</genreId>
+        <id>66</id>
+        <title>RandonMovieName2</title>
+    </movie>
+    <movie>
+        <genreId>3</genreId>
+        <id>67</id>
+        <title>RandonMovieName3</title>
+    </movie>
 </movies>

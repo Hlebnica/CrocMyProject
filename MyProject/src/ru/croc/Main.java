@@ -32,8 +32,8 @@ public class Main {
 
       if (isUserExists) {
         System.out.printf("Текущий пользователь в системе: %s \n", userName);
-        loop:
-        while (true) {
+        boolean loop = true;
+        while (loop) {
           // Название жанра
           String genreName;
           // Название фильма
@@ -42,9 +42,9 @@ public class Main {
           int ratingNumber;
           // Название файла для импорта/экспорта
           String fileName;
-          System.out.println("\nСписок действий\n" +
+          System.out.println("\nСписок действий:\n" +
               "0 - Выход из программы\n" +
-              "1 - Получить список фильмов по жанру\n" +
+              "1 - Получить список топа фильмов по жанру\n" +
               "2 - Оценить фильм по его названию\n" +
               "3 - Обновить оценку фильму\n" +
               "4 - Импорт новых жанров из csv файла\n" +
@@ -56,12 +56,14 @@ public class Main {
           String action = input.nextLine();
           switch (action) {
             case "0":
-              break loop;
+              loop = false;
+              break;
             case "1":
               System.out.println("Введите название жанра");
               genreName = input.nextLine();
               System.out.println("Введите количество выводимых фильмов");
               int limit = input.nextInt();
+              input.nextLine();
               List<String> topComedies = movieDao.getTopMoviesByGenre(genreName.toLowerCase(),
                   limit);
               System.out.printf("Топ %d фильмов жанра %s:\n", limit, genreName);
@@ -74,6 +76,7 @@ public class Main {
               movieTitle = input.nextLine();
               System.out.println("Введите оценку от 0 до 10");
               ratingNumber = input.nextInt();
+              input.nextLine();
               ratingDao.addRatingByUserNameAndTitle(userName, movieTitle, ratingNumber);
               System.out.println("Оценка добавлена");
               break;
@@ -82,12 +85,13 @@ public class Main {
               movieTitle = input.nextLine();
               System.out.println("Введите оценку от 0 до 10");
               ratingNumber = input.nextInt();
+              input.nextLine();
               ratingDao.updateRatingByUserNameAndTitle(userName, movieTitle, ratingNumber);
               System.out.println("Оценка добавлена");
               break;
             case "4":
               System.out.println(
-                  "Введите название файла для импорта новых жанров в виде FileName.csv");
+                  "Введите название файла для импорта новых жанров в виде fileName.csv");
               fileName = input.nextLine();
               GenreImporter.importGenresFromCSV(ConnectionConfig.CSV_FILE_PATH + fileName,
                   genreDao);
@@ -95,7 +99,7 @@ public class Main {
               break;
             case "5":
               System.out.println(
-                  "Введите название файла для импорта новых фильмов в виде FileName.csv");
+                  "Введите название файла для импорта новых фильмов в виде fileName.csv");
               fileName = input.nextLine();
               MovieImporter.importMoviesFromCSV(ConnectionConfig.CSV_FILE_PATH + fileName,
                   movieDao);
@@ -103,7 +107,7 @@ public class Main {
               break;
             case "6":
               System.out.println(
-                  "Введите название файла для экспорта жанров из БД в виде FileName.xml");
+                  "Введите название файла для экспорта жанров из БД в виде fileName.xml");
               fileName = input.nextLine();
               GenreExporter.exportGenresToXML(ConnectionConfig.XML_FILE_PATH + fileName,
                   genreDao);
@@ -111,7 +115,7 @@ public class Main {
               break;
             case "7":
               System.out.println(
-                  "Введите название файла для экспорта фильмов из БД в виде FileName.xml");
+                  "Введите название файла для экспорта фильмов из БД в виде fileName.xml");
               fileName = input.nextLine();
               MovieExporter.exportGenresToXML(ConnectionConfig.XML_FILE_PATH + fileName,
                   movieDao);
@@ -135,6 +139,7 @@ public class Main {
               break;
             default:
               System.out.println("Неизвестная команда");
+              break;
           }
         }
       } else {

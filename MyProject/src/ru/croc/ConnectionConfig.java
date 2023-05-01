@@ -8,6 +8,5 @@ public class ConnectionConfig {
   public static final String LOGIN = "admin";
   public static final String PASSWORD = "admin";
   public static final String CSV_FILE_PATH = "./src/ru/croc/CsvFiles/";
-
   public static final String XML_FILE_PATH = "./src/ru/croc/XmlFiles/";
 }
