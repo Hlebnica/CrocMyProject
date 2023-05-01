@@ -4,7 +4,9 @@ import java.util.List;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
-
+/** Обертка XML для фильмов
+ *
+ */
 @XmlRootElement(name = "movies")
 public class MovieListWrapper {
   private List<Movie> movies;

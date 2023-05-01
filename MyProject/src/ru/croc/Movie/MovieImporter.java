@@ -8,6 +8,13 @@ import java.sql.SQLException;
 
 public class MovieImporter {
 
+  /** Импорт новых фильмов из CSV файла
+   *
+   * @param filePath - название файла
+   * @param movieDao - DAO фильмов
+   * @throws IOException
+   * @throws SQLException
+   */
   public static void importMoviesFromCSV(String filePath, MovieDao movieDao)
       throws IOException, SQLException {
     BufferedReader reader = new BufferedReader(new FileReader(filePath));

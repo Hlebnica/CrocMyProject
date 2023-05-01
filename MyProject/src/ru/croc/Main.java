@@ -86,28 +86,32 @@ public class Main {
               System.out.println("Оценка добавлена");
               break;
             case "4":
-              System.out.println("Введите название файла для импорта новых жанров");
+              System.out.println(
+                  "Введите название файла для импорта новых жанров в виде FileName.csv");
               fileName = input.nextLine();
               GenreImporter.importGenresFromCSV(ConnectionConfig.CSV_FILE_PATH + fileName,
                   genreDao);
               System.out.println("Новые жанры успешно импортированы из " + fileName);
               break;
             case "5":
-              System.out.println("Введите название файла для импорта новых фильмов");
+              System.out.println(
+                  "Введите название файла для импорта новых фильмов в виде FileName.csv");
               fileName = input.nextLine();
               MovieImporter.importMoviesFromCSV(ConnectionConfig.CSV_FILE_PATH + fileName,
                   movieDao);
               System.out.println("Новые фильмы успешно импортированы из " + fileName);
               break;
             case "6":
-              System.out.println("Введите название файла для экспорта жанров из БД");
+              System.out.println(
+                  "Введите название файла для экспорта жанров из БД в виде FileName.xml");
               fileName = input.nextLine();
               GenreExporter.exportGenresToXML(ConnectionConfig.XML_FILE_PATH + fileName,
                   genreDao);
               System.out.println("Жанры из БД успешно экспортированы в " + fileName);
               break;
             case "7":
-              System.out.println("Введите название файла для экспорта фильмов из БД");
+              System.out.println(
+                  "Введите название файла для экспорта фильмов из БД в виде FileName.xml");
               fileName = input.nextLine();
               MovieExporter.exportGenresToXML(ConnectionConfig.XML_FILE_PATH + fileName,
                   movieDao);

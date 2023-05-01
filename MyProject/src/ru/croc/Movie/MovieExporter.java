@@ -11,6 +11,13 @@ import jakarta.xml.bind.Marshaller;
 
 public class MovieExporter {
 
+  /** Экспорт фильмов в XML файл из БД
+   *
+   * @param filePath - название файла
+   * @param movieDao - DAO фильмов
+   * @throws SQLException
+   * @throws JAXBException
+   */
   public static void exportGenresToXML(String filePath, MovieDao movieDao)
       throws SQLException, JAXBException {
     List<Movie> movies = movieDao.getAllMovies();

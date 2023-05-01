@@ -72,6 +72,14 @@ public class MovieDao {
     return movies;
   }
 
+  /**
+   * Выбор топа рейтинга фильмов
+   *
+   * @param genreName - название жанра
+   * @param limit     - число фильмов для вывода
+   * @return - список топа рейтинга фильмов
+   * @throws SQLException
+   */
   public List<String> getTopMoviesByGenre(String genreName, int limit) throws SQLException {
     List<String> topMovies = new ArrayList<>();
     String query = "SELECT m.TITLE, AVG(r.rating_digit) AS avg_rating " +
@@ -96,11 +104,16 @@ public class MovieDao {
     return topMovies;
   }
 
+  /** Получить фильмы из БД с их жанрами
+   *
+   * @return - список фильмов из БД с их жанрами
+   * @throws SQLException
+   */
   public List<String> getAllMoviesWithGenreNames() throws SQLException {
     List<String> movies = new ArrayList<>();
     String query = "SELECT m.ID, m.TITLE, g.GENRE_NAME " +
         "FROM MOVIE m " +
-        "INNER JOIN GENRE g ON m.GENRE_ID = g.ID";
+        "LEFT JOIN GENRE g ON m.GENRE_ID = g.ID";
     PreparedStatement statement = connection.prepareStatement(query);
     ResultSet resultSet = statement.executeQuery();
     movies.add("Id | Название фильма | Жанр фильма");
@@ -114,9 +127,5 @@ public class MovieDao {
     statement.close();
     return movies;
   }
-
-
-
-
 
 }

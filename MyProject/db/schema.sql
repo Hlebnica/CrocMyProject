@@ -57,3 +57,13 @@ UPDATE rating SET rating_digit = ?
 WHERE user_id = (SELECT id FROM users WHERE user_name = ?) 
 AND movie_id = (SELECT id FROM movie WHERE title = ?);
 
+-- Получить фильмы из БД с их жанрами
+SELECT m.ID, m.TITLE, g.GENRE_NAME 
+FROM MOVIE m 
+LEFT JOIN  GENRE g ON m.GENRE_ID = g.ID;
+
+-- Получить список рейтинга, названий фильмов и оценки пользователей
+SELECT u.USER_NAME, m.TITLE, r.RATING_DIGIT 
+FROM RATING r
+INNER JOIN USERS u ON r.USER_ID = u.ID
+INNER JOIN MOVIE m ON r.MOVIE_ID = m.ID;

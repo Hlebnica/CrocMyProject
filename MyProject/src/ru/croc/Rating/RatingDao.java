@@ -75,6 +75,13 @@ public class RatingDao {
     return ratings;
   }
 
+  /** Добавить рейтинг по имени пользователя, названию фильма и рейтингу от 0 до 10
+   *
+   * @param userName - Имя пользователя
+   * @param movieTitle - Название фильма
+   * @param rating - Число рейтинга от 0 до 10
+   * @throws SQLException
+   */
   public void addRatingByUserNameAndTitle(String userName, String movieTitle, int rating)
       throws SQLException {
     String query = "INSERT INTO rating (user_id, movie_id, rating_digit) " +
@@ -88,6 +95,13 @@ public class RatingDao {
     statement.close();
   }
 
+  /** Обновить рейтинг по имени пользователя, названию фильма и рейтингу от 0 до 10
+   *
+   * @param userName - Имя пользователя
+   * @param movieTitle - Название фильма
+   * @param rating - Число рейтинга от 0 до 10
+   * @throws SQLException
+   */
   public void updateRatingByUserNameAndTitle(String userName, String movieTitle, int rating)
       throws SQLException {
     String query = "UPDATE rating SET rating_digit = ? " +
@@ -101,6 +115,11 @@ public class RatingDao {
     statement.close();
   }
 
+  /** Получить список рейтинга, названий фильмов и оценки пользователей
+   *
+   * @return - список рейтинга, названий фильмов и оценки пользователей
+   * @throws SQLException
+   */
   public List<String> getAllRatingsWithUserAndMovieNames() throws SQLException {
     List<String> ratings = new ArrayList<>();
     String query = "SELECT u.USER_NAME, m.TITLE, r.RATING_DIGIT " +

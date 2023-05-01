@@ -9,6 +9,13 @@ import jakarta.xml.bind.Marshaller;
 
 public class GenreExporter {
 
+  /** Экспорт жанров в XML файл из БД
+   *
+   * @param filePath - название файла
+   * @param genreDAO - DAO жанра
+   * @throws SQLException
+   * @throws JAXBException
+   */
   public static void exportGenresToXML(String filePath, GenreDao genreDAO)
       throws SQLException, JAXBException {
     List<Genre> genres = genreDAO.getAllGenres();
