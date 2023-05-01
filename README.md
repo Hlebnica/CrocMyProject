@@ -63,6 +63,7 @@
     - Vovan226
 
 6. Использовать пункты меню
+
 ![](MyProject/images/login%20user.jpg)
 
 # Функционал и скриншоты
@@ -71,6 +72,7 @@
 0 - Выход из программы
 
 1 - Получить список топа фильмов по жанру
+
 ![](MyProject/images/topFilms.jpg)
 
 2 - Оценить фильм по его названию
@@ -106,31 +108,38 @@ TestNewMovie12
 ![](MyProject/images/newMovieRateInDB.jpg)
 
 3 - Обновить оценку фильму
+
 ![](MyProject/images/updateRateFilm.jpg)
 ![](MyProject/images/updateRateFilmInDB.jpg)
 
 4 - Импорт новых жанров из csv файла
+
 ![](MyProject/images/genersBeforeCsvUpdate.jpg)
 ![](MyProject/images/newGenersFromCsv.jpg)
 ![](MyProject/images/newGenersFromCsvInDb.jpg)
 
 5 - Импорт новых фильмов из csv файла
+
 ![](MyProject/images/moviesInDbBeforeCsvUpdate.jpg)
 ![](MyProject/images/newMoviesFromCsv.jpg)
 ![](MyProject/images/moviesInDbAfterCsvUpdate.jpg)
 
 6 - Экспорт жанров из БД в xml файл
+
 ![](MyProject/images/6_exportGenersFromDb.jpg)
 ![](MyProject/images/6_GenersFromXml.jpg)
 
 7 - Экспорт фильмов из БД в xml файл
+
 ![](MyProject/images/7_exportMoviesFromDb.jpg)
 ![](MyProject/images/7_MoviesFromXml.jpg)
 
 8 - Получить список рейтинга фильмов и их оценок от пользователей
+
 ![](MyProject/images/8_moiveList.jpg)
 
 9 - Получить список фильмов и их жанров
+
 ![](MyProject/images/9_IdMoviesGeners.jpg)
 
 
